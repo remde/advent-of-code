@@ -1,4 +1,5 @@
 **/out
+**/.idea
 *.iml
 *.swp
-.DS.store
+.DS_store
