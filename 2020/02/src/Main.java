@@ -9,7 +9,7 @@ public class Main {
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader(
-                    "/Users/I540368/coding/aoc/2020/02/input.txt"));
+                    "../input.txt"));
             String line = reader.readLine();
             while (line != null) {
                 validPasswords += parseLine(line);
