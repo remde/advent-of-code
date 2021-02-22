@@ -61,12 +61,25 @@ public class PasswordPhilosophy {
     private static boolean isPasswordValid(int minAppearances, int maxAppearances, char policyLetter, int stringStart, String password) {
         int occurences = 0;
 
-        for (int i=stringStart; i<password.length(); i++) {
-            if (password.charAt(i) == policyLetter) {
-                occurences++;
-            }
-        }
+//        PART 1
+//        for (int i=stringStart; i<password.length(); i++) {
+//            if (password.charAt(i) == policyLetter) {
+//                occurences++;
+//            }
+//        }
+//        return (occurences >= minAppearances && occurences <= maxAppearances);
 
-        return (occurences >= minAppearances && occurences <= maxAppearances);
+
+//        PART 2
+//        String formattedPassword = password.substring(stringStart - 1);
+//        if (formattedPassword.charAt(minAppearances) == policyLetter) {
+//            if (formattedPassword.charAt(maxAppearances) != policyLetter) {
+//                return true;
+//            }
+//        } else if (formattedPassword.charAt(maxAppearances) == policyLetter) {
+//            return true;
+//        }
+//
+        return false;
     }
 }
