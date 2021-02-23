@@ -71,15 +71,10 @@ public class PasswordPhilosophy {
 
 
 //        PART 2
-//        String formattedPassword = password.substring(stringStart - 1);
-//        if (formattedPassword.charAt(minAppearances) == policyLetter) {
-//            if (formattedPassword.charAt(maxAppearances) != policyLetter) {
-//                return true;
-//            }
-//        } else if (formattedPassword.charAt(maxAppearances) == policyLetter) {
-//            return true;
-//        }
-//
-        return false;
+        String formattedPassword = password.substring(stringStart - 1);
+        return ((formattedPassword.charAt(minAppearances) == policyLetter &&
+                    formattedPassword.charAt(maxAppearances) != policyLetter)
+                || (formattedPassword.charAt(maxAppearances) == policyLetter &&
+                        formattedPassword.charAt(minAppearances) != policyLetter));
     }
 }
