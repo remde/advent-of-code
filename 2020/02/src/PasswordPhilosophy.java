@@ -4,6 +4,12 @@ import java.io.IOException;
 
 public class PasswordPhilosophy {
 
+    private static final String AT_COLON = ":";
+    private static final int IN_TWO = 2;
+    private static final String AT_BLANK_SPACE = " ";
+    private static final String AT_HYPHEN = "-";
+    private static final int FIRST_POSITION = 0;
+
     public static void main(String[] args) {
         int validPasswords = 0;
         BufferedReader reader;
@@ -24,45 +30,31 @@ public class PasswordPhilosophy {
     }
 
     private static int parseLine(String line) {
-        int minAppearances, maxAppearances, stringStart;
+        int minAppearances, maxAppearances;
         char policyLetter;
+        String password;
 
-        if (line.charAt(1) == '-') {
-            minAppearances = Character.getNumericValue(line.charAt(0));
-            if(line.charAt(3) == ' ') {
-                maxAppearances = Character.getNumericValue(line.charAt(2));
-                policyLetter = line.charAt(4);
-                stringStart = 7;
-            } else {
-                maxAppearances = Integer.parseInt(line.substring(2, 4));
-                policyLetter = line.charAt(5);
-                stringStart = 8;
-            }
-        } else {
-            minAppearances = Integer.parseInt(line.substring(0, 2));
-            if(line.charAt(4) == ' ') {
-                maxAppearances = Character.getNumericValue(line.charAt(3));
-                policyLetter = line.charAt(5);
-                stringStart = 8;
-            } else {
-                maxAppearances = Integer.parseInt(line.substring(3, 5));
-                policyLetter = line.charAt(6);
-                stringStart = 9;
-            }
-        }
+        String[] halfLineArray = line.split(AT_COLON, IN_TWO);
+        String[] quarterLineArray = halfLineArray[0].split(AT_BLANK_SPACE, IN_TWO);
+        String[] policyRange = quarterLineArray[0].split(AT_HYPHEN, IN_TWO);
 
-        if (isPasswordValid(minAppearances, maxAppearances, policyLetter, stringStart, line)) {
+        minAppearances = Integer.parseInt(policyRange[0]);
+        maxAppearances = Integer.parseInt(policyRange[1]);
+        policyLetter = quarterLineArray[1].charAt(FIRST_POSITION);
+        password = halfLineArray[1];
+
+        if (isPasswordValid(minAppearances, maxAppearances, policyLetter, password)) {
             return 1;
         }
 
         return 0;
     }
 
-    private static boolean isPasswordValid(int minAppearances, int maxAppearances, char policyLetter, int stringStart, String password) {
+    private static boolean isPasswordValid(int minAppearances, int maxAppearances, char policyLetter, String password) {
         int occurences = 0;
 
 //        PART 1
-//        for (int i=stringStart; i<password.length(); i++) {
+//        for (int i=1; i<password.length(); i++) {
 //            if (password.charAt(i) == policyLetter) {
 //                occurences++;
 //            }
@@ -71,10 +63,9 @@ public class PasswordPhilosophy {
 
 
 //        PART 2
-        String formattedPassword = password.substring(stringStart - 1);
-        return ((formattedPassword.charAt(minAppearances) == policyLetter &&
-                    formattedPassword.charAt(maxAppearances) != policyLetter)
-                || (formattedPassword.charAt(maxAppearances) == policyLetter &&
-                        formattedPassword.charAt(minAppearances) != policyLetter));
+        return ((password.charAt(minAppearances) == policyLetter &&
+                    password.charAt(maxAppearances) != policyLetter)
+                || (password.charAt(maxAppearances) == policyLetter &&
+                        password.charAt(minAppearances) != policyLetter));
     }
 }
