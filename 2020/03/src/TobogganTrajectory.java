@@ -4,9 +4,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TobogganTrajectory {
+class TobogganTrajectory {
 
-    static List<String> treeMap = new ArrayList<>();
+    static List<String> treeMap;
+
+    public TobogganTrajectory() {
+        treeMap = new ArrayList<>();
+    }
 
     public static void main(String[] args) {
         BufferedReader reader;
