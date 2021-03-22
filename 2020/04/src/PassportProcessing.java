@@ -68,28 +68,28 @@ class PassportProcessing {
         return 0;
     }
 
-    private static boolean isValidByr(String byr) {
+    public static boolean isValidByr(String byr) {
         if (byr == null || byr.isEmpty()) return false;
 
         return Integer.parseInt(byr) <= 2002
                 && Integer.parseInt(byr) >= 1920;
     }
 
-    private static boolean isValidIyr(String iyr) {
+    public static boolean isValidIyr(String iyr) {
         if (iyr == null || iyr.isEmpty()) return false;
 
         return Integer.parseInt(iyr) <= 2020
                 && Integer.parseInt(iyr) >= 2010;
     }
 
-    private static boolean isValidEyr(String eyr) {
+    public static boolean isValidEyr(String eyr) {
         if (eyr == null || eyr.isEmpty()) return false;
 
         return Integer.parseInt(eyr) <= 2030
                 && Integer.parseInt(eyr) >= 2020;
     }
 
-    private static boolean isValidHgt(String hgt) {
+    public static boolean isValidHgt(String hgt) {
         if (hgt == null || hgt.length() < 4) return false;
         int hgtNumber = Integer.parseInt(hgt.substring(0, hgt.length() - 2));
         if (hgt.endsWith("in")) {
@@ -102,7 +102,7 @@ class PassportProcessing {
         return false;
     }
 
-    private static boolean isValidHcl(String hcl) {
+    public static boolean isValidHcl(String hcl) {
         if (hcl == null || hcl.length() != 7 || hcl.charAt(0) != '#') return false;
 
         String hairColor = hcl.substring(1);
@@ -111,7 +111,7 @@ class PassportProcessing {
         return match.find();
     }
 
-    private static boolean isValidEcl(String ecl) {
+    public static boolean isValidEcl(String ecl) {
         if (ecl == null || ecl.isEmpty()) return false;
 
         return (ecl.equals("amb")
@@ -123,7 +123,7 @@ class PassportProcessing {
                 || ecl.equals("oth"));
     }
 
-    private static boolean isValidPid(String pid) {
+    public static boolean isValidPid(String pid) {
         if (pid == null || pid.length() != 9) return false;
 
         Pattern pattern = Pattern.compile("[0-9]+");
