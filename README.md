@@ -1,8 +1,12 @@
 # Advent of Code
 
-These are my Java solutions for the [Advent of Code event](https://adventofcode.com/). The inputs are inside each challenge folder, and the main function will print the answer to the terminal.
+These are my solutions for the [Advent of Code event](https://adventofcode.com/). The inputs are inside each challenge folder, and the main function will print the answer to the terminal. Each year is done in a language.
 
-## Running the challenges
+## 2019 - JavaScript
 
-- Build with `javac Challenge.java`
-- Run with `java Challenge` 
+- Run with `node ChallengeName.js` 
+
+## 2020 - Java
+
+- Build with `javac ChallengeName.java`
+- Run with `java ChallengeName` 
